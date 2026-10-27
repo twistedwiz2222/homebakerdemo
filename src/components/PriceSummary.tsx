@@ -186,11 +186,8 @@ export const PriceSummary: React.FC<PriceSummaryProps> = ({
         </div>
       </div>
 
-      {/* Permanently fixed bottom CTA bar */}
-      <div
-        className="fixed bottom-0 left-0 right-0 z-[999] bg-white/95 backdrop-blur-md border-t border-stone-200/90 shadow-[0_-8px_25px_rgba(0,0,0,0.12)] px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-        style={{ transform: 'translateZ(0)' }}
-      >
+      {/* Permanently fixed bottom CTA bar stuck directly to viewport bottom */}
+      <div className="fixed bottom-0 left-0 right-0 z-[999] bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
           <div className="shrink-0">
             <span className="text-[10px] uppercase tracking-wider text-stone-400 font-bold block">

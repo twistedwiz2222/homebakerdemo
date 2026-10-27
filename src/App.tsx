@@ -65,7 +65,7 @@ export function App() {
   }, [selectedSize, selectedFlavor, customizations])
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] text-stone-900 pb-36 pt-4 sm:pt-6 px-3.5 sm:px-6 w-full max-w-full overflow-x-hidden box-border">
+    <div className="min-h-screen bg-[#faf7f2] text-stone-900 pb-72 pt-4 sm:pt-6 px-3.5 sm:px-6 w-full max-w-full overflow-x-hidden box-border">
       <div className="max-w-2xl mx-auto w-full">
         <Header />
 
