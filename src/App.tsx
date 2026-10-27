@@ -5,6 +5,7 @@ import { StepFlavor } from '@/components/StepFlavor'
 import { StepCustomizations, type CustomizationState } from '@/components/StepCustomizations'
 import { StepEventDetails, type EventDetailsState } from '@/components/StepEventDetails'
 import { PriceSummary } from '@/components/PriceSummary'
+import { FixedBottomCTA } from '@/components/FixedBottomCTA'
 import { CAKE_SIZES, CAKE_FLAVORS, TIME_SLOTS } from '@/data/cakeOptions'
 
 export function App() {
@@ -65,62 +66,73 @@ export function App() {
   }, [selectedSize, selectedFlavor, customizations])
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] text-stone-900 pb-72 pt-4 sm:pt-6 px-3.5 sm:px-6 w-full max-w-full overflow-x-hidden box-border">
-      <div className="max-w-2xl mx-auto w-full">
-        <Header />
+    <div className="flex flex-col h-[100dvh] w-full bg-[#faf7f2] text-stone-900 overflow-hidden select-none">
+      {/* Scrollable Content Container (Takes remaining height, scrolls smoothly) */}
+      <div className="flex-1 overflow-y-auto overscroll-y-contain px-3.5 sm:px-6 pt-4 pb-8 w-full">
+        <div className="max-w-2xl mx-auto w-full">
+          <Header />
 
-        {/* Main interactive form card */}
-        <main className="space-y-5 sm:space-y-6 bg-white/95 backdrop-blur-xs p-3.5 sm:p-7 rounded-3xl border border-stone-200/80 shadow-sm w-full box-border">
-          {/* Step 1 */}
-          <section>
-            <StepSize
-              selectedSize={selectedSize}
-              onSelectSize={setSelectedSize}
-            />
-          </section>
+          {/* Main interactive form card */}
+          <main className="space-y-5 sm:space-y-6 bg-white/95 backdrop-blur-xs p-3.5 sm:p-7 rounded-3xl border border-stone-200/80 shadow-sm w-full box-border">
+            {/* Step 1 */}
+            <section>
+              <StepSize
+                selectedSize={selectedSize}
+                onSelectSize={setSelectedSize}
+              />
+            </section>
 
-          <hr className="border-stone-100" />
+            <hr className="border-stone-100" />
 
-          {/* Step 2 */}
-          <section>
-            <StepFlavor
-              selectedFlavor={selectedFlavor}
-              onSelectFlavor={setSelectedFlavor}
-            />
-          </section>
+            {/* Step 2 */}
+            <section>
+              <StepFlavor
+                selectedFlavor={selectedFlavor}
+                onSelectFlavor={setSelectedFlavor}
+              />
+            </section>
 
-          <hr className="border-stone-100" />
+            <hr className="border-stone-100" />
 
-          {/* Step 3 */}
-          <section>
-            <StepCustomizations
+            {/* Step 3 */}
+            <section>
+              <StepCustomizations
+                customizations={customizations}
+                onToggle={toggleCustomization}
+              />
+            </section>
+
+            <hr className="border-stone-100" />
+
+            {/* Step 4 */}
+            <section>
+              <StepEventDetails
+                details={eventDetails}
+                onChange={updateEventDetails}
+              />
+            </section>
+
+            <hr className="border-stone-100" />
+
+            {/* Detailed summary breakdown inside the scroll area */}
+            <PriceSummary
+              size={selectedSize}
+              flavor={selectedFlavor}
               customizations={customizations}
-              onToggle={toggleCustomization}
+              totalPrice={totalPrice}
             />
-          </section>
-
-          <hr className="border-stone-100" />
-
-          {/* Step 4 */}
-          <section>
-            <StepEventDetails
-              details={eventDetails}
-              onChange={updateEventDetails}
-            />
-          </section>
-
-          <hr className="border-stone-100" />
-
-          {/* Detailed summary component */}
-          <PriceSummary
-            size={selectedSize}
-            flavor={selectedFlavor}
-            customizations={customizations}
-            eventDetails={eventDetails}
-            totalPrice={totalPrice}
-          />
-        </main>
+          </main>
+        </div>
       </div>
+
+      {/* Permanently Docked Sticky Bottom Bar (Zero whitespace, cannot scroll away) */}
+      <FixedBottomCTA
+        totalPrice={totalPrice}
+        size={selectedSize}
+        flavor={selectedFlavor}
+        customizations={customizations}
+        eventDetails={eventDetails}
+      />
     </div>
   )
 }
