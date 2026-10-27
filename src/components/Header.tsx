@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
             Crumb & Whisk
           </h1>
           <p className="text-xs text-stone-500 font-medium mt-1">
-            Bespoke Celebration Cakes & Confections
+            Custom Cakes & Sweet Treats
           </p>
         </div>
       </div>
