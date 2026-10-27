@@ -144,9 +144,9 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
         )}
       </div>
 
-      {/* Date & Time Slot in Grid */}
+      {/* Date & Time Slot in Grid with box-sizing & min-w-0 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <div>
+        <div className="w-full min-w-0">
           <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5 text-rose-600" />
             Event Date *
@@ -156,11 +156,11 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
             min={todayStr}
             value={details.eventDate}
             onChange={(e) => onChange({ eventDate: e.target.value })}
-            className="w-full text-sm bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-400/50 focus:border-rose-500 transition-shadow font-medium"
+            className="w-full max-w-full box-border block text-sm bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-400/50 focus:border-rose-500 transition-shadow font-medium appearance-none min-h-[46px]"
           />
         </div>
 
-        <div>
+        <div className="w-full min-w-0">
           <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-rose-600" />
             Time Slot *
@@ -168,7 +168,7 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
           <select
             value={details.timeSlot}
             onChange={(e) => onChange({ timeSlot: e.target.value })}
-            className="w-full text-sm bg-white border border-stone-300 rounded-xl px-3 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-400/50 focus:border-rose-500 transition-shadow font-medium cursor-pointer"
+            className="w-full max-w-full box-border block text-sm bg-white border border-stone-300 rounded-xl px-3 py-2.5 text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-400/50 focus:border-rose-500 transition-shadow font-medium cursor-pointer min-h-[46px]"
           >
             {TIME_SLOTS.map((slot) => (
               <option key={slot} value={slot}>
@@ -195,15 +195,15 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
             }`}
           >
             <div
-              className={`p-2 rounded-lg ${
+              className={`p-2 rounded-lg shrink-0 ${
                 details.orderType === 'pickup' ? 'bg-rose-600 text-white' : 'bg-stone-100 text-stone-500'
               }`}
             >
               <Store className="w-4 h-4" />
             </div>
-            <div>
-              <p className="text-xs sm:text-sm font-semibold">Self Pick-up</p>
-              <p className="text-[10px] text-stone-500">From Studio (Free)</p>
+            <div className="truncate">
+              <p className="text-xs sm:text-sm font-semibold truncate">Self Pick-up</p>
+              <p className="text-[10px] text-stone-500 truncate">Studio (Free)</p>
             </div>
           </button>
 
@@ -217,15 +217,15 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
             }`}
           >
             <div
-              className={`p-2 rounded-lg ${
+              className={`p-2 rounded-lg shrink-0 ${
                 details.orderType === 'delivery' ? 'bg-rose-600 text-white' : 'bg-stone-100 text-stone-500'
               }`}
             >
               <MapPin className="w-4 h-4" />
             </div>
-            <div>
-              <p className="text-xs sm:text-sm font-semibold">Home Delivery</p>
-              <p className="text-[10px] text-stone-500">Cab / Porter at actuals</p>
+            <div className="truncate">
+              <p className="text-xs sm:text-sm font-semibold truncate">Home Delivery</p>
+              <p className="text-[10px] text-stone-500 truncate">At actuals</p>
             </div>
           </button>
         </div>
@@ -277,7 +277,7 @@ export const StepEventDetails: React.FC<StepEventDetailsProps> = ({
       <div className="flex items-start gap-2 text-[11px] text-stone-500 bg-stone-100/80 p-2.5 rounded-xl">
         <Info className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
         <span>
-          If you have uploaded a reference photo, don't worry! You can also easily attach or share the original high-res image directly in the WhatsApp chat window once the order link opens.
+          If you have uploaded a reference photo, you can also easily attach or share the original high-res image directly in the WhatsApp chat window once the order link opens.
         </span>
       </div>
     </div>

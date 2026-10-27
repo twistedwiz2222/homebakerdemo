@@ -186,8 +186,11 @@ export const PriceSummary: React.FC<PriceSummaryProps> = ({
         </div>
       </div>
 
-      {/* Sticky Bottom Bar with safe-area for mobile notch/navigation home indicator */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-stone-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-3 pt-2.5 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] sm:py-3.5">
+      {/* Permanently fixed bottom CTA bar */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-[999] bg-white/95 backdrop-blur-md border-t border-stone-200/90 shadow-[0_-8px_25px_rgba(0,0,0,0.12)] px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+        style={{ transform: 'translateZ(0)' }}
+      >
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
           <div className="shrink-0">
             <span className="text-[10px] uppercase tracking-wider text-stone-400 font-bold block">
@@ -206,7 +209,7 @@ export const PriceSummary: React.FC<PriceSummaryProps> = ({
           <button
             type="button"
             onClick={handleWhatsAppOrder}
-            className="flex-1 max-w-xs sm:max-w-sm flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.97] text-white py-3 sm:py-3.5 px-3.5 rounded-2xl font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/25 transition-all duration-150 cursor-pointer min-h-[46px]"
+            className="flex-1 max-w-xs sm:max-w-sm flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.97] text-white py-3 sm:py-3.5 px-4 rounded-2xl font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition-all duration-150 cursor-pointer min-h-[48px]"
           >
             <MessageCircle className="w-5 h-5 fill-current shrink-0" />
             <span className="truncate">Order via WhatsApp</span>

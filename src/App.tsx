@@ -65,12 +65,12 @@ export function App() {
   }, [selectedSize, selectedFlavor, customizations])
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] text-stone-900 pb-32 sm:pb-36 pt-4 sm:pt-6 px-3 sm:px-6 overflow-x-hidden">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-[#faf7f2] text-stone-900 pb-36 pt-4 sm:pt-6 px-3.5 sm:px-6 w-full max-w-full overflow-x-hidden box-border">
+      <div className="max-w-2xl mx-auto w-full">
         <Header />
 
         {/* Main interactive form card */}
-        <main className="space-y-5 sm:space-y-6 bg-white/95 backdrop-blur-xs p-3.5 sm:p-7 rounded-3xl border border-stone-200/80 shadow-sm">
+        <main className="space-y-5 sm:space-y-6 bg-white/95 backdrop-blur-xs p-3.5 sm:p-7 rounded-3xl border border-stone-200/80 shadow-sm w-full box-border">
           {/* Step 1 */}
           <section>
             <StepSize
@@ -120,12 +120,6 @@ export function App() {
             totalPrice={totalPrice}
           />
         </main>
-
-        {/* Footer with safety margin so it stays comfortably visible above the bottom bar */}
-        <footer className="mt-8 mb-6 text-center text-[11px] sm:text-xs text-stone-400 space-y-1">
-          <p>© {new Date().getFullYear()} Crumb & Whisk Bakery Studio. Handcrafted with love.</p>
-          <p>Direct WhatsApp Ordering • Quick Response Guaranteed</p>
-        </footer>
       </div>
     </div>
   )
